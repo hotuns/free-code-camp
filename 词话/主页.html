@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery-3.1.1.js"></script>
+    <title>子曰</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="content">
+            <p class="text"></p>
+            <p class="source"></p>
+        </div>
+        <button type="button">下一句</button>
+        <div>
+
+        </div>
+    </div>
+    <footer>
+        <p>by HDS</p>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            $("#box button").click(function () {
+               $.getJSON("词话.json",function(json){
+                    $("text").html(JSON.parse(json));
+               });
+            });
+        });
+    </script>
+</body>
+
+</html>
