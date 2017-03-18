@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>子曰</title>
+</head>
+
+<body>
+    <div id="box">
+        <div id="content">
+            <p class="text">凡事预则立，不预则废。</p>
+            <p class="source">—— 礼记·中庸</p>
+        </div>
+        <button id="button" type="button">下一句</button>
+        <div class="bdsharebuttonbox" data-tag="share_1">
+            <a class="bds_tqq" data-cmd="tqq" href="#"></a>
+            <a class="bds_tsina" data-cmd="tsina"></a>
+        </div>
+        <footer>
+            <p>by HDS</p>
+        </footer>
+    </div>
+
+
+    <script type="text/javascript">
+        $("#button").click(function () {
+            $.getJSON("词话.json", function (json) {
+                var i = parseInt(Math.random() * 9);
+                $(".text").html(json.cihua[i].text);
+                $(".source").html("—— " + json.cihua[i].source);
+                $("body").css("background-color", json.cihua[i].color);
+                $("#box").css("color", json.cihua[i].color);
+                $("#button").css("background-color", json.cihua[i].color);
+            });
+        });
+
+
+
+        window._bd_share_config = {
+            common: {
+                //此处放置通用设置
+                bdText: $("#content").text(),
+                bdDesc: '这话说的有水平',
+                bdUrl: window.location.href,
+            },
+            share: [{
+                "tag" : "share_1",
+			"bdSize" : 16
+            }]
+        }
+        
+
+
+        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src =
+            'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+    </script>
+
+</body>
+
+</html>
